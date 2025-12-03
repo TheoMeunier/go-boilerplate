@@ -17,6 +17,10 @@ A minimal boilerplate to quickly start an API in Go with:
 
 - `make run` or `go run cmd/api/main.go`
 
+Start migrations:
+- `make migrate`
+- `make migration name="create_users_table"`
+
 
 ## 📂 Structure (résumé)
 ```

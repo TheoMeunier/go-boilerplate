@@ -33,4 +33,5 @@ rollback:
 # Lancer l'app :
 #   make run
 run:
-	go run main.go
+	docker compose up -d
+	go run cmd/api/main.go
