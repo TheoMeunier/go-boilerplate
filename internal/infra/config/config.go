@@ -13,6 +13,7 @@ type Config struct {
 	DBHost     string
 	DBPort     string
 	DBName     string
+	JWTSecret  string
 }
 
 func LoadConfig() *Config {
@@ -27,10 +28,15 @@ func LoadConfig() *Config {
 		DBHost:     os.Getenv("DB_HOST"),
 		DBPort:     os.Getenv("DB_PORT"),
 		DBName:     os.Getenv("DB_NAME"),
+		JWTSecret:  os.Getenv("JWT_SECRET"),
 	}
 
 	if cfg.DBUser == "" || cfg.DBPassword == "" || cfg.DBHost == "" || cfg.DBPort == "" || cfg.DBName == "" {
 		log.Fatal("missing required environment variables for database")
+	}
+
+	if cfg.JWTSecret == "" {
+		log.Fatal("missing required environment variables for jwt secret")
 	}
 
 	return cfg

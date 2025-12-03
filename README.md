@@ -7,6 +7,7 @@ A minimal boilerplate to quickly start an API in Go with:
 - Router HTTP
 - Logger
 - Utils / Helpers
+- Authentification JWT
 
 ## 🚀 Installation
 
