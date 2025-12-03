@@ -23,7 +23,7 @@ func InitStorage() (FileStorage, error) {
 	switch env {
 	case "local":
 		return &LocalStorageAdapter{
-			BasePath: "./local_storage",
+			BasePath: "./storage",
 		}, nil
 
 	case "s3":
@@ -60,6 +60,6 @@ func InitStorage() (FileStorage, error) {
 		}, nil
 
 	default:
-		return nil, fmt.Errorf("FILE_STORAGE_ENV inconnu: %s (valeurs possibles: local, s3)", env)
+		return nil, fmt.Errorf("env %s inconnu in storage adapter", env)
 	}
 }
