@@ -1,0 +1,22 @@
+services:
+
+  postgres:
+    image: postgres:17.4-alpine
+    container_name: boilerplate_database
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: boilerplate
+      POSTGRES_USER: boilerplate
+      POSTGRES_PASSWORD: boilerplate
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - ./storage-db:/var/lib/postgresql/data
+    networks:
+      - app_network
+
+# Docker Networks
+networks:
+  app_network:
+    driver: bridge
