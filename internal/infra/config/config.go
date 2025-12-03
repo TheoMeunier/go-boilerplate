@@ -8,12 +8,13 @@ import (
 )
 
 type Config struct {
-	DBUser     string
-	DBPassword string
-	DBHost     string
-	DBPort     string
-	DBName     string
-	JWTSecret  string
+	DBUser      string
+	DBPassword  string
+	DBHost      string
+	DBPort      string
+	DBName      string
+	JWTSecret   string
+	FileStorage string
 }
 
 func LoadConfig() *Config {
@@ -23,12 +24,13 @@ func LoadConfig() *Config {
 	}
 
 	cfg := &Config{
-		DBUser:     os.Getenv("DB_USER"),
-		DBPassword: os.Getenv("DB_PASSWORD"),
-		DBHost:     os.Getenv("DB_HOST"),
-		DBPort:     os.Getenv("DB_PORT"),
-		DBName:     os.Getenv("DB_NAME"),
-		JWTSecret:  os.Getenv("JWT_SECRET"),
+		DBUser:      os.Getenv("DB_USER"),
+		DBPassword:  os.Getenv("DB_PASSWORD"),
+		DBHost:      os.Getenv("DB_HOST"),
+		DBPort:      os.Getenv("DB_PORT"),
+		DBName:      os.Getenv("DB_NAME"),
+		JWTSecret:   os.Getenv("JWT_SECRET"),
+		FileStorage: os.Getenv("FILE_STORAGE_ENV"),
 	}
 
 	if cfg.DBUser == "" || cfg.DBPassword == "" || cfg.DBHost == "" || cfg.DBPort == "" || cfg.DBName == "" {
@@ -37,6 +39,10 @@ func LoadConfig() *Config {
 
 	if cfg.JWTSecret == "" {
 		log.Fatal("missing required environment variables for jwt secret")
+	}
+
+	if cfg.FileStorage == "" {
+		log.Fatal("missing required environment variables for file storage")
 	}
 
 	return cfg

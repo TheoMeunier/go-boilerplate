@@ -4,6 +4,7 @@ import (
 	"boilerplate/internal/infra/config"
 	"boilerplate/internal/infra/db"
 	"boilerplate/internal/infra/http"
+	"boilerplate/internal/infra/storage"
 	"log"
 )
 
@@ -16,6 +17,12 @@ func main() {
 	}
 
 	database.Close()
+
+	_, err = storage.InitStorage()
+
+	if err != nil {
+		log.Fatalf("failed to initialize storage: %v", err)
+	}
 
 	http.NewHandler()
 }
