@@ -8,6 +8,7 @@ A minimal boilerplate to quickly start an API in Go with:
 - Logger
 - Utils / Helpers
 - Authentification JWT
+- Storage local and s3
 
 ## 🚀 Installation
 
@@ -23,7 +24,7 @@ Start migrations:
 - `make migration name="create_users_table"`
 
 
-## 📂 Structure (résumé)
+## 📂 Structure
 ```
 cmd/               → Entry points (API servers, migrations, CLI tools)
 
@@ -31,15 +32,16 @@ internal/
   app/             → Application setup and initialization
   domain/          → Business logic layer (entities, services, use cases)
   infra/
+    config/        → Load configuration from environment variables
     db/            → Database connection, repositories, and migrations
     http/          → HTTP layer: router, handlers, middlewares
+    storage/       → Storage: local, s3
 
 pkg/               → Shared packages/utilities: logger, error handling, helpers
 ```
 
-🎯 Objective
-
+## 🎯 Objective
 Provide a clean, simple, and scalable foundation to get started with a Go project quickly, without imposing too much structure.
 
-📄 Licence
+## 📄 Licence
 MIT
